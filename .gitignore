@@ -1,0 +1,6 @@
+# Large datasets
+data/raw/*.csv
+data/processed/*.csv
+
+# Keep small example datasets if needed
+!data/sample/
