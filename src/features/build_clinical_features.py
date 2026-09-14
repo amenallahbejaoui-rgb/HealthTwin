@@ -16,45 +16,50 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 # CLINICAL OBSERVATION CODES
 # ============================================================
 OBSERVATION_CODES = {
+    # Vital signs
+    "systolic_bp": "8480-6",
+    "diastolic_bp": "8462-4",
+    "respiratory_rate": "9279-1",
+    "heart_rate": "8867-4",
+    "oxygen_saturation": "2708-6",
+    "temperature": "8310-5",
 
-    "systolic_bp": ["8480-6"],
-    "diastolic_bp": ["8462-4"],
-    "respiratory_rate": ["9279-1"],
-    "heart_rate": ["8867-4"],
-    "oxygen_saturation": ["2708-6"],
-    "temperature": ["8310-5"],
+    # Body measurements
+    "weight": "29463-7",
+    "height": "8302-2",
+    "bmi": "39156-5",
 
-    "weight": ["29463-7"],
-    "height": ["8302-2"],
-    "bmi": ["39156-5"],
+    # Kidney
+    "egfr": "33914-3",
+    "creatinine": "38483-4",
+    "urea_nitrogen": "6299-2",
 
-    "egfr": ["33914-3", "33914-3"],
-    "creatinine": ["2160-0", "38483-4"],
-    "urea_nitrogen": ["3094-0", "6299-2"],
+    # Metabolic / electrolytes
+    "glucose": "2339-0",
+    "hba1c": "4548-4",
+    "sodium": "2947-0",
+    "potassium": "2823-3",
+    "chloride": "2069-3",
+    "calcium": "49765-1",
 
-    "glucose": ["2345-7", "2339-0"],
-    "sodium": ["2951-2", "2947-0"],
-    "potassium": ["2823-3"],
-    "chloride": ["2075-0", "2069-3"],
-    "calcium": ["17861-6", "49765-1"],
+    # Liver
+    "ast": "1920-8",
+    "alt": "1742-6",
+    "bilirubin": "1975-2",
+    "albumin": "1751-7",
+    "alkaline_phosphatase": "6768-6",
 
-    "hba1c": ["4548-4"],
+    # Blood / CBC
+    "hemoglobin": "718-7",
+    "hematocrit": "4544-3",
+    "platelets": "777-3",
+    "wbc": "6690-2",
 
-    "ast": ["1920-8"],
-    "alt": ["1742-6"],
-    "bilirubin": ["1975-2"],
-    "albumin": ["1751-7"],
-    "alkaline_phosphatase": ["6768-6"],
-
-    "hemoglobin": ["718-7"],
-    "hematocrit": ["4544-3"],
-    "platelets": ["777-3"],
-    "wbc": ["6690-2"],
-
-    "triglycerides": ["2571-8"],
-    "total_cholesterol": ["2093-3"],
-    "ldl": ["18262-6"],
-    "hdl": ["2085-9"],
+    # Lipids
+    "triglycerides": "2571-8",
+    "total_cholesterol": "2093-3",
+    "ldl": "18262-6",
+    "hdl": "2085-9",
 }
 
 # ============================================================
@@ -188,6 +193,9 @@ def extract_measurement_features(
         on="PATIENT",
         how="inner"
     )
+    subset = subset.sort_values(
+    ["PATIENT", "DATE"]
+)
 
     # --------------------------------------------------------
     # CRITICAL:
