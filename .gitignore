@@ -1,0 +1,10 @@
+# Large datasets
+data/raw/*.csv
+data/processed/*.csv
+
+# Keep small example datasets if needed
+!data/sample/
+echo backend/v/>>.gitignore
+echo __pycache__/>>.gitignore
+echo *.pyc>>.gitignorebackend/v/
+backend/v/
